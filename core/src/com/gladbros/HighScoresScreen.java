@@ -24,7 +24,6 @@ public class HighScoresScreen implements Screen {
         this.game = game;
     }
 
-
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
@@ -36,6 +35,7 @@ public class HighScoresScreen implements Screen {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
+                MenuScreen.isMusicPlaying = true;
             }
 
             @Override
@@ -43,7 +43,6 @@ public class HighScoresScreen implements Screen {
                 return true;
             }
         });
-
         stage.addActor(Button.gameMenuButton);
 
     }
