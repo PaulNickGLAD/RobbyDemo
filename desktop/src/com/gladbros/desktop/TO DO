@@ -1,0 +1,24 @@
+TO DO:
+
+1. Adding logical of obstacles calculations: https://www.youtube.com/watch?v=r2uRVMTafEg
+2. Add Hangar and changing models
+3. Add Saving function to the file (to the DB later) saving results.
+4. Add music (to first screen and to )
+5. Add new levels.
+6. Add map of levels
+
+
+OPTIONAL
+1. Adding additional lives 3-5
+2. Adding fire function
+
+
+
+
+
+Useful links:
+
+https://yandex.ru/images/search?text=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8%20%D0%BC%D0%B5%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D1%82%D1%8B%20%D0%BC%D1%83%D0%BB%D1%8C%D1%82%D1%8F%D1%88%D0%BD%D1%8B%D0%B5&from=tabbar
+                                            obstacles
+https://yandex.ru/images/search?pos=67&from=tabbar&p=1&img_url=https%3A%2F%2Fimages-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%2Ff%2F03fdb466-60c7-4df2-8aeb-8f9f008d2afa%2Fdcg6air-58ac59e6-1f42-4084-825e-ae87e9a914fc.png%2Fv1%2Ffill%2Fw_894%2Ch_894%2Cq_70%2Cstrp%2Fcute_little_3d_robot_character_design_by_m7_dcg6air-pre.jpg%3Ftoken%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMDI0IiwicGF0aCI6IlwvZlwvMDNmZGI0NjYtNjBjNy00ZGYyLThhZWItOGY5ZjAwOGQyYWZhXC9kY2c2YWlyLTU4YWM1OWU2LTFmNDItNDA4NC04MjVlLWFlODdlOWE5MTRmYy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.LG_c3KgW6sx5w2qQP8lpT4S8iJay8FOUTEEplk3vGog&text=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%BE%D0%B2&rpt=simage
+                                            robots

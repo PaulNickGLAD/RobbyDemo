@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.gladbros.TextFields.*;
 
 public class Score {
     static BitmapFont font; //
@@ -12,7 +11,6 @@ public class Score {
     static int currentScore = 0;
 
     public Score() {
-        //Set color of font -cyan
         font = new BitmapFont();
         font.setColor(Color.RED);
     }
@@ -26,8 +24,6 @@ public class Score {
         font.draw(batch,value,725,60);
 
     }
-
-    public void update(SpriteBatch batch) { }
 
     public String printScore(){
         currentScore = Timer.seconds *50 +Timer.minutes*60*50;

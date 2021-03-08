@@ -2,13 +2,10 @@ package com.gladbros.TextFields;
 
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
-import java.io.IOException;
 
 public class Timer  {
     static BitmapFont font; //
@@ -18,7 +15,6 @@ public class Timer  {
     static int minutes = 0;
 
     public Timer() {
-        //Set color of font -cyan
         font = new BitmapFont();
         font.setColor(Color.RED);
     }
@@ -33,8 +29,6 @@ public class Timer  {
         font.draw(batch,value,710,410);
 
     }
-
-    public void update(SpriteBatch batch) { }
 
     public String printTime(){
         String milisecondsTime = (miliseconds<10)?("0" + miliseconds):(""+miliseconds);

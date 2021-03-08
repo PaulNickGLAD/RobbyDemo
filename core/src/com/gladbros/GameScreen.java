@@ -1,13 +1,10 @@
 package com.gladbros;
 
-
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gladbros.Objects.Meteor;
 import com.gladbros.Objects.Robot;
@@ -41,7 +38,7 @@ public class GameScreen implements Screen {
         frames = new Frames();
         timer = new Timer();
         score = new Score();
-        musicGame = Gdx.audio.newMusic(Gdx.files.internal("Ashes_Remain-End_of_me.mp3"));
+        musicGame = Gdx.audio.newMusic(Gdx.files.internal("music\\Ashes_Remain-End_of_me.mp3"));
         musicGame.setLooping(true);
         gameIsOver=false;
     }
@@ -62,10 +59,7 @@ public class GameScreen implements Screen {
         timer.render(batch);
         score.render(batch);
         batch.end();
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            gameIsOver = true;
 
-        }
     }
     public void update(){
         background.update(batch);
@@ -84,6 +78,5 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
-        //img.dispose();
     }
 }
