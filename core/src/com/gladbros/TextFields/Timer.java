@@ -19,7 +19,6 @@ public class Timer  {
         font.setColor(Color.RED);
     }
 
-
     public void render(SpriteBatch batch) {
         GlyphLayout glyphLayout = new GlyphLayout();
         glyphLayout.setText(font,txt);
@@ -27,11 +26,9 @@ public class Timer  {
         value.setText(font,printTime());
         font.draw(batch,glyphLayout,710,430);
         font.draw(batch,value,710,410);
-
     }
 
     public String printTime(){
-        String milisecondsTime = (miliseconds<10)?("0" + miliseconds):(""+miliseconds);
         String secondsTime = (seconds<10)?("0" + seconds):(""+seconds);
         String minutesTime = (minutes<10)?("0" + minutes):(""+minutes);
         miliseconds++;

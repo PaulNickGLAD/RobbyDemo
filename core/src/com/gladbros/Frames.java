@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Frames {
-    Texture txTop,txBottom, txLeft, txRight;
-    Vector2 posTop, posBottom, posLeft, posRight;
 
     Frames(){
         txTop = new Texture("top.jpg");
@@ -19,16 +17,13 @@ public class Frames {
         posRight = new Vector2(785,15);
     }
 
+    Texture txTop,txBottom, txLeft, txRight;
+    Vector2 posTop, posBottom, posLeft, posRight;
 
     public void render(SpriteBatch batch) {
         batch.draw(txTop,posTop.x,posTop.y);
         batch.draw(txBottom,posBottom.x,posBottom.y);
         batch.draw(txLeft,posLeft.x,posLeft.y);
         batch.draw(txRight,posRight.x,posRight.y);
-    }
-
-
-    public void update(SpriteBatch batch) {
-
     }
 }

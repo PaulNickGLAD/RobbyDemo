@@ -9,10 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.gladbros.Objects.Button;
 
+public class HangarScreen implements Screen {
 
-public class HighScoresScreen implements Screen {
-
-    public HighScoresScreen(MenuScreen game) {
+    public HangarScreen(MenuScreen game) {
         this.game = game;
     }
 
@@ -27,8 +26,8 @@ public class HighScoresScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
-        img = new Texture("MainMenu.jpg");
-        buttonReturn = new Button("Return",300,50,100,58);
+        img = new Texture("Hangar.jpg");
+        buttonReturn = new Button("Return",350,50,100,58);
         stage.addActor(buttonReturn.getButton());
     }
 
@@ -57,5 +56,4 @@ public class HighScoresScreen implements Screen {
     public void resume() {}
     @Override
     public void hide() {}
-
 }

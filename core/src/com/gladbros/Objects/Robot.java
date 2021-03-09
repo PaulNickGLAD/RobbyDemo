@@ -6,9 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-
 public class Robot {
-    private Texture texture;
+    Texture texture;
     public static Vector2 pos;
 
     public Robot(){
@@ -16,19 +15,17 @@ public class Robot {
         pos = new Vector2(20,270);
     }
 
-
     public void render(SpriteBatch batch) {
         batch.draw(texture, pos.x, pos.y);
     }
 
-    public void update(SpriteBatch batch) {
+    public void update(SpriteBatch batch)
+    {
         if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
             if (pos.y< 360){ pos.y+=5; }
-            else {}
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             if (pos.y>20){ pos.y-=5; }
-            else {}
         }
     }
 }

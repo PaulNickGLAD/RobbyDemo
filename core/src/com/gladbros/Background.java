@@ -7,27 +7,26 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Background  {
 
-    public static int speed = 3;
-    private BG [] bgs;
-
-    class BG
-    {
-        private Texture texture;
-        private Vector2 pos;
-
-        public BG (Vector2 pos)
-        {
-            texture = new Texture("bg.jpg");
-            this.pos = pos;
-        }
-    }
-
-
     public Background()
     {
         bgs = new BG[2];
         bgs[0] = new BG(new Vector2(0,0));
         bgs[1] = new BG(new Vector2(800,0));
+    }
+
+    public static int speed = 3;
+    BG [] bgs;
+
+    static class BG
+    {
+        public BG (Vector2 pos)
+        {
+            texture = new Texture("bg.jpg");
+            this.pos = pos;
+        }
+
+        Texture texture;
+        Vector2 pos;
     }
 
     public void render(SpriteBatch batch)
@@ -46,8 +45,4 @@ public class Background  {
             bgs[1].pos.x = 800;
         }
     }
-
-
-
-
 }

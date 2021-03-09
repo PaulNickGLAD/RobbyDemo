@@ -9,8 +9,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.gladbros.Objects.Button;
@@ -21,7 +19,7 @@ import com.gladbros.TextFields.Timer;
 
 public class GameScreen implements Screen {
 
-    private MenuScreen game;
+    MenuScreen game;
     SpriteBatch batch;
     Background background;
     Robot robot;
@@ -29,7 +27,7 @@ public class GameScreen implements Screen {
     Frames frames;
     Timer timer;
     Score score;
-    Music musicGame;
+    public Music musicGame;
     boolean gameIsOver;
     Texture gameOver;
     int highScore;
@@ -42,26 +40,12 @@ public class GameScreen implements Screen {
         this.game = game;
     }
 
-
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
-        buttonRestart = new Button("Restart",280,370);
-        Button.gameMenuButton.addListener(new InputListener() {
-            @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                batch.dispose();
-                stage.dispose();
-                musicGame.stop();
-                MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
-            }
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(Button.gameMenuButton);
+        buttonRestart = new Button("Restart",280,370,200,58);
+        stage.addActor(buttonRestart.getButton());
         batch = new SpriteBatch();
         background = new Background();
         robot = new Robot();
@@ -102,6 +86,7 @@ public class GameScreen implements Screen {
             result.draw(batch, value,300,320);
             stage.act();
             stage.draw();
+            musicGame.stop();
         }
         batch.end();
 
@@ -124,6 +109,11 @@ public class GameScreen implements Screen {
     }
 
     @Override
+    public void dispose() {
+        batch.dispose();
+    }
+
+    @Override
     public void resize(int width, int height) {}
     @Override
     public void pause() {}
@@ -131,8 +121,4 @@ public class GameScreen implements Screen {
     public void resume() {}
     @Override
     public void hide() {}
-    @Override
-    public void dispose() {
-        batch.dispose();
-    }
 }
