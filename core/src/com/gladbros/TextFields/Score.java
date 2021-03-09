@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Score {
     static BitmapFont font; //
     static String txt = "SCORE";
-    static int currentScore = 0;
+    public static int currentScore = 0;
 
     public Score() {
         font = new BitmapFont();

@@ -34,8 +34,9 @@ public class HighScoresScreen implements Screen {
         Button.gameMenuButton.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
-                MenuScreen.isMusicPlaying = true;
+               //MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
+               MenuScreen.game.setScreen(game);
+               MenuScreen.isMusicPlaying = false;
             }
 
             @Override

@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Meteor{
     private Texture texture;
-    private Vector2 [] pos;
+    public static Vector2 [] pos;
     public static int speed = 12;
 
     public Meteor(){
@@ -34,14 +34,15 @@ public class Meteor{
         for (int i =0;i < pos.length; i++)
         {
             pos[i].x-=speed;
-            if(Timer.seconds == 40 && Timer.miliseconds==1){
-                speed+=2;
-            }
-            if(pos[i].x<=-10)
+            //Speedup function
+            if(Timer.seconds == 40 && Timer.miliseconds==1){ speed+=2; }
+            if(pos[i].x<=0)
             {
+                System.out.println("I am there");
                 pos[i].x=800 + new Random().nextInt(185);
                 if (i>0){
                     if ((pos[i].x - pos[i-1].x)<82 && (pos[i].y-pos[i-1].y )<82){
+                        System.out.println("I am here");
                         pos[i].x+=82;
                         pos[i].y+=82;
                     }

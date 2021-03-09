@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Robot {
     private Texture texture;
-    private Vector2 pos;
+    public static Vector2 pos;
 
     public Robot(){
         texture = new Texture("Robby.jpg");

@@ -46,9 +46,7 @@ public class MenuScreen implements Screen {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 game.setScreen(new GameScreen(MenuScreen.this));
-                if (music instanceof Music){
-                    music.stop();
-                }
+                music.stop();
             }
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -63,6 +61,7 @@ public class MenuScreen implements Screen {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 game.setScreen(new HighScoresScreen(MenuScreen.this));
+                music.stop();
             }
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -93,8 +92,9 @@ public class MenuScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         if(!isMusicPlaying) {
-
-            music.play();}
+            music.play();
+            music.setVolume(0.5f);
+        }
         batch.draw(img, 0, 0);
         GlyphLayout glyphLayout = new GlyphLayout();
         glyphLayout.setText(title,"Robby. The Sky Traveller I");
@@ -103,7 +103,6 @@ public class MenuScreen implements Screen {
         batch.end();
         stage.act();
         stage.draw();
-
     }
 
     @Override

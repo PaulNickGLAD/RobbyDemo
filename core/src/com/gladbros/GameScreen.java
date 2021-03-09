@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gladbros.Objects.Meteor;
 import com.gladbros.Objects.Robot;
@@ -23,6 +24,8 @@ public class GameScreen implements Screen {
     Score score;
     Music musicGame;
     boolean gameIsOver;
+    Texture gameOver;
+    int highScore;
 
     public GameScreen(MenuScreen game) {
         this.game = game;
@@ -41,6 +44,7 @@ public class GameScreen implements Screen {
         musicGame = Gdx.audio.newMusic(Gdx.files.internal("music\\Ashes_Remain-End_of_me.mp3"));
         musicGame.setLooping(true);
         gameIsOver=false;
+        gameOver = new Texture("Robot2.jpg");
     }
 
     @Override
@@ -52,12 +56,15 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         background.render(batch);
-
-        robot.render(batch);
-        meteor.render(batch);
+        if(!gameIsOver){
+            robot.render(batch);
+            meteor.render(batch);
+            timer.render(batch);
+            score.render(batch);
+        }
+        else {batch.draw(gameOver,350,200);}
         frames.render(batch);
-        timer.render(batch);
-        score.render(batch);
+
         batch.end();
 
     }
@@ -65,6 +72,17 @@ public class GameScreen implements Screen {
         background.update(batch);
         robot.update(batch);
         meteor.update(batch);
+        for(int i =0;i < Meteor.pos.length; i++){
+            if(((((robot.pos.x>=Meteor.pos[i].x) && (robot.pos.x<=(Meteor.pos[i].x+82)))) ||
+                    ((robot.pos.x<=Meteor.pos[i].x) && (Meteor.pos[i].x<=(robot.pos.x+70))))
+                    && (((robot.pos.y>=Meteor.pos[i].y) && ((Meteor.pos[i].y+82)>=robot.pos.y))
+                    ||((robot.pos.y<= Meteor.pos[i].y)&& ((robot.pos.y+70)>=Meteor.pos[i].y))))
+            {
+                gameIsOver = true;
+                highScore = Score.currentScore;
+                System.out.println(""+ highScore);
+            }
+        }
     }
 
     @Override
