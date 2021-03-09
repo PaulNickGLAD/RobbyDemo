@@ -14,10 +14,10 @@ public class Meteor{
 
     public Meteor(){
         texture = new Texture("Meteor.jpg");
-        pos = new Vector2[2];
-        pos[0] = new Vector2(800,200+ (new Random().nextInt(200)+10));
+        pos = new Vector2[3];
+        pos[0] = new Vector2(800,200 + (new Random().nextInt(200)+10));
         pos[1] = new Vector2(1000,100 + (new Random().nextInt(240)+48));
-        pos[1] = new Vector2(1200,150 + (new Random().nextInt(200)+48));
+        pos[2] = new Vector2(1300,150 + (new Random().nextInt(200)+48));
     }
 
     public void render(SpriteBatch batch)
@@ -39,7 +39,7 @@ public class Meteor{
             if(pos[i].x<=0)
             {
                 System.out.println("I am there");
-                pos[i].x=800 + new Random().nextInt(185);
+                pos[i].x=800 + new Random().nextInt(85);
                 if (i>0){
                     if ((pos[i].x - pos[i-1].x)<82 && (pos[i].y-pos[i-1].y )<82){
                         System.out.println("I am here");

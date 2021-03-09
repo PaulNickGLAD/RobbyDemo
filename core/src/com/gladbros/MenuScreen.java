@@ -15,6 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.gladbros.Objects.Button;
+import com.gladbros.Objects.Meteor;
+import com.gladbros.TextFields.Score;
+import com.gladbros.TextFields.Timer;
 
 public class MenuScreen implements Screen {
     public static Game game;
@@ -28,6 +31,12 @@ public class MenuScreen implements Screen {
 
     public MenuScreen(Game game) {
         this.game = game;
+        //init variables
+        Score.currentScore = 0;
+        Timer.miliseconds = 0;
+        Timer.seconds = 0;
+        Timer.minutes = 0;
+        Meteor.speed = 12;
     }
 
 
@@ -71,6 +80,7 @@ public class MenuScreen implements Screen {
         Button.gameMenuButton.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                System.exit(0);
             }
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {

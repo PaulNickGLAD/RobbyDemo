@@ -12,7 +12,7 @@ public class Timer  {
     static String txt = "TIME:";
     public static int miliseconds = 0;
     public static int seconds = 0;
-    static int minutes = 0;
+    public static int minutes = 0;
 
     public Timer() {
         font = new BitmapFont();

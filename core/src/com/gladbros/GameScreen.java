@@ -51,9 +51,9 @@ public class GameScreen implements Screen {
         Button.gameMenuButton.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
                 batch.dispose();
                 stage.dispose();
+                musicGame.stop();
                 MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
             }
             @Override
