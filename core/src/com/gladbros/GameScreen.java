@@ -1,12 +1,19 @@
 package com.gladbros;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.gladbros.Objects.Button;
 import com.gladbros.Objects.Meteor;
 import com.gladbros.Objects.Robot;
 import com.gladbros.TextFields.Score;
@@ -26,6 +33,10 @@ public class GameScreen implements Screen {
     boolean gameIsOver;
     Texture gameOver;
     int highScore;
+    String userName = "anonymous";
+    Stage stage;
+    Button buttonRestart;
+    BitmapFont result;
 
     public GameScreen(MenuScreen game) {
         this.game = game;
@@ -34,6 +45,23 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
+        buttonRestart = new Button("Restart",280,370);
+        Button.gameMenuButton.addListener(new InputListener() {
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                //MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
+                batch.dispose();
+                stage.dispose();
+                MenuScreen.game.setScreen(new MenuScreen(MenuScreen.game));
+            }
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(Button.gameMenuButton);
         batch = new SpriteBatch();
         background = new Background();
         robot = new Robot();
@@ -43,8 +71,10 @@ public class GameScreen implements Screen {
         score = new Score();
         musicGame = Gdx.audio.newMusic(Gdx.files.internal("music\\Ashes_Remain-End_of_me.mp3"));
         musicGame.setLooping(true);
-        gameIsOver=false;
-        gameOver = new Texture("Robot2.jpg");
+        gameIsOver = false;
+        gameOver = new Texture("GameOver.jpg");
+        result = new BitmapFont();
+        result.setColor(Color.BLACK);
     }
 
     @Override
@@ -55,16 +85,24 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        background.render(batch);
         if(!gameIsOver){
+            background.render(batch);
             robot.render(batch);
             meteor.render(batch);
             timer.render(batch);
             score.render(batch);
-        }
-        else {batch.draw(gameOver,350,200);}
-        frames.render(batch);
+            frames.render(batch);
 
+        }
+        else {
+            batch.draw(gameOver,0,0);
+            GlyphLayout value = new GlyphLayout();
+            String data = (userName + ", your HighScore: " + highScore);
+            value.setText(result,data);
+            result.draw(batch, value,300,320);
+            stage.act();
+            stage.draw();
+        }
         batch.end();
 
     }
@@ -72,6 +110,7 @@ public class GameScreen implements Screen {
         background.update(batch);
         robot.update(batch);
         meteor.update(batch);
+        //Physics of the obstacles and main character
         for(int i =0;i < Meteor.pos.length; i++){
             if(((((robot.pos.x>=Meteor.pos[i].x) && (robot.pos.x<=(Meteor.pos[i].x+82)))) ||
                     ((robot.pos.x<=Meteor.pos[i].x) && (Meteor.pos[i].x<=(robot.pos.x+70))))
@@ -80,7 +119,6 @@ public class GameScreen implements Screen {
             {
                 gameIsOver = true;
                 highScore = Score.currentScore;
-                System.out.println(""+ highScore);
             }
         }
     }

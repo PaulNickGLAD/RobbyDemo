@@ -26,8 +26,6 @@ public class MenuScreen implements Screen {
     public static Music music;
     public static boolean isMusicPlaying = false;
 
-
-
     public MenuScreen(Game game) {
         this.game = game;
     }
