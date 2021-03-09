@@ -19,7 +19,8 @@ public class HangarScreen implements Screen {
     SpriteBatch batch;
     Texture img;
     Stage stage;
-    Button buttonReturn;
+    Button buttonReturn, buttonModelRobby, buttonModelRoboticI,buttonModelBattleShip;
+    public static int choice = 1;
 
     @Override
     public void show() {
@@ -27,8 +28,14 @@ public class HangarScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
         batch = new SpriteBatch();
         img = new Texture("Hangar.jpg");
-        buttonReturn = new Button("Return",350,50,100,58);
+        buttonReturn = new Button("Return",100,20,80,40);
         stage.addActor(buttonReturn.getButton());
+        buttonModelRobby = new Button("modelRobby",80,250,100,40);
+        stage.addActor(buttonModelRobby.getButton());
+        buttonModelRoboticI = new Button("modelRoboticI",80,200,100,40);
+        stage.addActor(buttonModelRoboticI.getButton());
+        buttonModelBattleShip = new Button("modelBattleship",80,150,100,40);
+        stage.addActor(buttonModelBattleShip.getButton());
     }
 
     @Override
@@ -37,6 +44,17 @@ public class HangarScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(img, 0, 0);
+        switch (choice){
+
+            case 1: { batch.draw(new Texture("modelRobbyB.jpg"),320,30); }
+            break;
+
+            case 2: { batch.draw(new Texture("modelRoboticIB.jpg"),320,20); }
+            break;
+
+            case 3: { batch.draw(new Texture("modelBattleshipB.jpg"),320,30); }
+            break;
+        }
         batch.end();
         stage.act();
         stage.draw();

@@ -5,13 +5,21 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.gladbros.HangarScreen;
 
 public class Robot {
     Texture texture;
     public static Vector2 pos;
 
     public Robot(){
-        texture = new Texture("Robby.jpg");
+        switch (HangarScreen.choice){
+            case 1: {texture = new Texture("Robby.jpg");}
+            break;
+            case 2: {texture = new Texture("modelRoboticI.jpg");}
+            break;
+            case 3: {texture = new Texture("modelBattleship.jpg");}
+            break;
+        }
         pos = new Vector2(20,270);
     }
 

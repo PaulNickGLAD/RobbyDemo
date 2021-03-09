@@ -116,9 +116,53 @@ public class Button {
                         return true;
                     }
                 });
-
-
             }
+            break;
+
+            case "modelRobby":{
+                gameMenuButton.addListener(new InputListener() {
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        HangarScreen.choice = 1;
+                        MenuScreen.music.stop();
+                    }
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        return true;
+                    }
+                });
+            }
+            break;
+
+            case "modelRoboticI":{
+                gameMenuButton.addListener(new InputListener() {
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        HangarScreen.choice = 2;
+                        MenuScreen.music.stop();
+                    }
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        return true;
+                    }
+                });
+            }
+            break;
+
+            case "modelBattleship":{
+                gameMenuButton.addListener(new InputListener() {
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        HangarScreen.choice=3;
+                        MenuScreen.music.stop();
+                    }
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        return true;
+                    }
+                });
+            }
+            break;
         }
     }
 

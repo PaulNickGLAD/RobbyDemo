@@ -1,11 +1,11 @@
 TO DO:
 
 1. Add Saving function to the file (to the DB later) saving results.
-2. Add Hangar and changing models
-3. After restart take a look to speed return to
+2. Add UserName field to Hangar
 
 OPTIONAL
 1. Adding additional lives 3-5
 2. Adding fire function
+3. Remaster small models
 
 Useful links:
