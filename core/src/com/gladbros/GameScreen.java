@@ -17,6 +17,8 @@ import com.gladbros.Objects.Robot;
 import com.gladbros.TextFields.Score;
 import com.gladbros.TextFields.Timer;
 
+import java.io.*;
+
 public class GameScreen implements Screen {
 
     MenuScreen game;
@@ -63,20 +65,20 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        update();
+
         musicGame.setVolume(0.05f);
         musicGame.play();
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         if(!gameIsOver){
+            update();
             background.render(batch);
             robot.render(batch);
             meteor.render(batch);
             timer.render(batch);
             score.render(batch);
             frames.render(batch);
-
         }
         else {
             batch.draw(gameOver,0,0);
@@ -95,7 +97,7 @@ public class GameScreen implements Screen {
         background.update(batch);
         robot.update(batch);
         meteor.update(batch);
-        //Physics of the obstacles and main character
+        //Physics of the obstacles and main
         for(int i =0;i < Meteor.pos.length; i++){
             if(((((robot.pos.x>=Meteor.pos[i].x) && (robot.pos.x<=(Meteor.pos[i].x+82)))) ||
                     ((robot.pos.x<=Meteor.pos[i].x) && (Meteor.pos[i].x<=(robot.pos.x+70))))
@@ -104,6 +106,7 @@ public class GameScreen implements Screen {
             {
                 gameIsOver = true;
                 highScore = Score.currentScore;
+                saveData();
             }
         }
     }
@@ -111,6 +114,15 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+    public void saveData() {
+        try{
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("core\\assets\\HighScores.txt",true));
+            bufferedWriter.write("" + highScore+"\n");
+            System.out.println(highScore);
+            bufferedWriter.close();
+        }catch (Exception e){}
     }
 
     @Override
